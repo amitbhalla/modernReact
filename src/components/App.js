@@ -1,7 +1,13 @@
-import classes from './App.modules.css';
+import SearchBar from './SearchBar';
+
+import './App.css';
 
 const App = () => {
-  return <div className={classes.app}>Hello World!</div>;
+  return (
+    <div className='search-box'>
+      <SearchBar />
+    </div>
+  );
 };
 
 export default App;
