@@ -26,7 +26,7 @@ class App extends Component {
     this.setState({ mounted: false });
   }
 
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.latitude) {
       return (
         <div>
@@ -43,6 +43,10 @@ class App extends Component {
     } else {
       return <Spinner>Waiting for location...</Spinner>;
     }
+  }
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 

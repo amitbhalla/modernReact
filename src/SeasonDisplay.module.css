@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  min-height: 100vh;
+  min-height: calc(100vh - 40px);
   max-width: 1200px;
   margin: 0 auto;
 }
