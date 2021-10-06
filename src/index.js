@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Spinner from './Spinner';
-import SeasonDisplay from './SeasonDispplay';
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends Component {
   state = { latitude: null, errorMessage: '', mounted: true };
