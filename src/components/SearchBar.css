@@ -26,8 +26,8 @@
 
 .search-bar {
   grid-row: 2/ 3;
-  width: 600px;
-  height: 40px;
+  width: 40rem;
+  height: 3rem;
   align-self: center;
   justify-self: center;
   background-color: #fff;
