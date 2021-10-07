@@ -1,0 +1,13 @@
+.videos-container {
+  display: flex;
+  width: 80rem;
+  margin: 0 auto;
+}
+
+.single-video {
+  width: 40rem;
+}
+
+.video-list {
+  width: 40rem;
+}
