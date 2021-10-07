@@ -7,14 +7,14 @@ import './App.css';
 const { REACT_APP_UNSPLASHID } = process.env;
 
 class App extends Component {
-  onSearchSubmit = (term) => {
+  onSearchSubmit = async (term) => {
     console.log(`Search Term: ${term}`);
-    axios.get('https://api.unsplash.com/search/photos', {
+    const response = await axios.get('https://api.unsplash.com/search/photos', {
       params: { query: term },
-      headers: {
-        Authorization: `Client-ID ${REACT_APP_UNSPLASHID}`,
-      },
+      headers: { Authorization: `Client-ID ${REACT_APP_UNSPLASHID}` },
     });
+
+    console.log(response.data.results);
   };
 
   render = () => {
