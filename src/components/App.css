@@ -1,0 +1,9 @@
+.search-results {
+  display: flex;
+  justify-content: center;
+}
+.search-box span {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 2rem;
+}

@@ -10,7 +10,7 @@ class SearchBar extends Component {
     this.props.onSubmit(this.state.term);
   };
 
-  render = () => {
+  render() {
     return (
       <form className='search-form' onSubmit={this.onFormSubmit}>
         <div className='search-fields'>
@@ -28,7 +28,7 @@ class SearchBar extends Component {
         </div>
       </form>
     );
-  };
+  }
 }
 
 export default SearchBar;
