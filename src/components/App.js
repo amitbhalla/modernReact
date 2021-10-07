@@ -1,7 +1,8 @@
 import { Component } from 'react';
 
-import SearchBar from './SearchBar';
 import unsplash from '../api/unsplash';
+import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
 import './App.css';
 
@@ -21,7 +22,7 @@ class App extends Component {
       <div className='search-box'>
         <SearchBar onSubmit={this.onSearchSubmit} />
         <div className='search-results'>
-          <span>Found: {this.state.images.length} image(s)</span>
+          <ImageList images={this.state.images} />
         </div>
       </div>
     );
