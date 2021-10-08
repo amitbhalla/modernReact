@@ -1,13 +1,131 @@
 .App {
   text-align: center;
+  display: flex;
+  align-content: space-between;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 99vh;
+  background-color: white;
+}
+.search-container {
+  background-color: #cb202d;
 }
 
-.video-count {
-  display: block;
-  padding-top: 2rem;
+.search-container__content {
+  max-width: 100rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.content__label {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 1.2rem;
-  font-size: 14px;
-  color: #474747;
+  font-size: 18px;
+  color: #fae9ea;
+}
+
+.content__search-bar {
+  width: 40rem;
+  height: 3rem;
+  border: 0px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  box-shadow: 0 2.4rem 4.8rem rgb(0 0 0 / 8%);
+  outline: none;
+}
+
+.videos-container {
+  background-color: white;
+  display: flex;
+  margin-top: 2rem;
+  width: 100rem;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.single-video__player {
+  border-right: 2px solid #f2f2f2;
+}
+
+.player__iframe {
+  display: flex;
+  padding-top: 2rem;
+  justify-items: left;
+}
+.player__iframe iframe {
+  width: 70rem;
+  height: 40rem;
+}
+
+.single-video__content {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.content__title {
+  display: inline-block;
+  font-size: 4.4rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -1px;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.content__desc {
+  display: inline-block;
+  padding-top: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.videos-list {
+  margin: 2rem 0;
+  list-style: none;
+}
+
+.videos-list__video {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f2f2f2;
+  cursor: pointer;
+}
+.videos-list__video:last-child {
+  border-bottom: none;
+}
+
+.video__image-wrapper {
+  width: 10rem;
+}
+.image-wrapper__image {
+  height: 5rem;
+}
+.video__content-wrapper {
+  text-align: left;
+}
+.content-wrapper__title {
+  font-weight: 600;
+}
+.content-wrapper__author {
+  font-size: 0.8rem;
+}
+.copy {
+  background-color: white;
+  display: block;
+  border-top: 2px solid #f2f2f2;
+  padding-top: 2rem;
+  width: 100rem;
+  margin: 0 auto;
+  padding-bottom: 2rem;
 }

@@ -1,18 +1,17 @@
 import VideoItem from './VideoItem';
 
-import './VideoList.css';
-
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, onVideoSelect }) => {
   const renderedList = videos.map((video) => {
-    return <VideoItem key={video.id.videoId} video={video} />;
+    return (
+      <VideoItem
+        key={video.id.videoId}
+        video={video}
+        onVideoSelect={onVideoSelect}
+      />
+    );
   });
 
-  return (
-    <div className='videos-container'>
-      <div className='single-video'></div>
-      <ul className='video-list'>{renderedList}</ul>
-    </div>
-  );
+  return <ul className='videos-list'>{renderedList}</ul>;
 };
 
 export default VideoList;
