@@ -19,7 +19,15 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    if (term) search();
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [term]);
 
   const renderedResults = results.map((result) => {
@@ -27,6 +35,15 @@ const Search = () => {
     const cleanSnippet = result.snippet.replace(regex, '');
     return (
       <div key={result.pageid} className='item'>
+        <div className='right floated content'>
+          <a
+            target='_blank'
+            rel='noreferrer'
+            href={`https://en.wikipedia.org?curid=${result.pageid}`}
+            className='ui button'>
+            Go
+          </a>
+        </div>
         <div className='content'>
           <div className='header'>{result.title}</div>
           {cleanSnippet}
@@ -34,6 +51,13 @@ const Search = () => {
       </div>
     );
   });
+
+  const onTermChange = (val) => {
+    setTerm(val);
+    if (val.length < 1) {
+      setResults([]);
+    }
+  };
 
   //   const renderedResults = results.map((result) => {
   //     return (
@@ -55,7 +79,7 @@ const Search = () => {
             type='text'
             className='input'
             value={term}
-            onChange={(e) => setTerm(e.target.value)}
+            onChange={(e) => onTermChange(e.target.value)}
           />
         </div>
       </div>
