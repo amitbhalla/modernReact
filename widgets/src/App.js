@@ -1,58 +1,65 @@
-import { useState } from 'react';
+import React, { useState } from "react";
+import Accordion from "./components/Accordion";
+import Search from "./components/Search";
+import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
+import Route from "./components/Route";
+import Header from "./components/Header";
 
-// import Accordion from './components/Accordion';
-// import Search from './components/Search';
-import Dropdown from './components/Dropdown';
-
-import './App.css';
-/*
 const items = [
   {
-    title: 'What is React?',
-    content:
-      'React is a JavaScript library for building user interfaces. Learn what React is all about on our homepage or in the tutorial.',
+    title: "What is React?",
+    content: "React is a front end javascript framework",
   },
   {
-    title: 'How to try React?',
-    content:
-      'React has been designed from the start for gradual adoption, and you can use as little or as much React as you need.',
+    title: "Why use React?",
+    content: "React is a favorite JS library among engineers",
   },
   {
-    title: 'How to add React to a website?',
-    content:
-      'You can add React to an HTML page in one minute. You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.',
-  },
-];
-*/
-const options = [
-  {
-    label: 'Red',
-    value: 'red',
-  },
-  {
-    label: 'Blue',
-    value: 'blue',
-  },
-  {
-    label: 'Green',
-    value: 'green',
+    title: "How do you use React?",
+    content: "You use React by creating components",
   },
 ];
 
-function App() {
+const options = [
+  {
+    label: "The Color Red",
+    value: "red",
+  },
+  {
+    label: "The Color Green",
+    value: "green",
+  },
+  {
+    label: "A Shade of Blue",
+    value: "blue",
+  },
+];
+
+const App = () => {
   const [selected, setSelected] = useState(options[0]);
 
   return (
-    <div className='App'>
-      {/* <Accordion items={items} /> */}
-      {/* <Search /> */}
-      <Dropdown
-        options={options}
-        selected={selected}
-        onSelectedChange={setSelected}
-      />
+    <div>
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          label="Select a color"
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
-}
-
+};
 export default App;
