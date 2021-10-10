@@ -1,50 +1,32 @@
-import React, { Component } from 'react';
-
-import youtube from '../apis/youtube';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
-import VideoDetail from './VideoDetail';
 import VideoList from './VideoList';
-import './App.css';
+import VideoDetail from './VideoDetail';
+import useVideos from '../hooks/useVideos';
 
-class App extends Component {
-  state = { videos: [], selectedVideo: null };
-  onFormSubmit = async (term) => {
-    const response = await youtube.get('/search', {
-      params: { q: term },
-    });
-    this.setState({ videos: response.data.items });
-    this.setState({ selectedVideo: this.state.videos[0] });
-  };
+const App = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videos, search] = useVideos('buildings');
 
-  onVideoSelect = (video) => {
-    this.setState({ selectedVideo: video });
-  };
+  useEffect(() => {
+    setSelectedVideo(videos[0]);
+  }, [videos]);
 
-  render() {
-    return (
-      <div className='App'>
-        <SearchBar onFormSubmit={this.onFormSubmit} />
-        {this.state.videos.length === 0 && (
-          <span className='video-count'>
-            Please use the searchbar and then press enter
-          </span>
-        )}
-        <div className='videos-container'>
-          {this.state.videos.length > 0 && (
-            <VideoDetail video={this.state.selectedVideo} />
-          )}
-
-          {this.state.videos.length > 0 && (
-            <VideoList
-              videos={this.state.videos}
-              onVideoSelect={this.onVideoSelect}
-            />
-          )}
+  return (
+    <div className="ui container">
+      <SearchBar onFormSubmit={search} />
+      <div className="ui grid">
+        <div className="ui row">
+          <div className="eleven wide column">
+            <VideoDetail video={selectedVideo} />
+          </div>
+          <div className="five wide column">
+            <VideoList onVideoSelect={setSelectedVideo} videos={videos} />
+          </div>
         </div>
-        <div className='copy'>React Video Search - Made by Amit</div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
